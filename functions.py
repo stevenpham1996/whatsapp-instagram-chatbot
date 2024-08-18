@@ -16,14 +16,14 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 
 
 # Add lead to Airtable
-def create_lead(name, phone):
+def create_lead(name, phone, email):
   url = "https://api.airtable.com/v0/appt5qCjVVa2CDM3t/Accelerator%20Leads"
   headers = {
       "Authorization":
       f"Bearer {AIRTABLE_API_KEY}",  # NOTE: When adding your Airtable API key in secrets it must include "Bearer YOURKEY", keeping the Bearer and the space. If you don't add this then it won't work!
       "Content-Type": "application/json"
   }
-  data = {"records": [{"fields": {"Name": name, "Phone": phone}}]}
+  data = {"records": [{"fields": {"Name": name, "Phone": phone, "Email": email}}]}
   response = requests.post(url, headers=headers, json=data)
   if response.status_code == 200:
     print("Lead created successfully.")

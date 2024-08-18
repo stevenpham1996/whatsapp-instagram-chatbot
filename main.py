@@ -98,7 +98,7 @@ def check_run_status():
         if tool_call.function.name == "create_lead":
           # Process lead creation
           arguments = json.loads(tool_call.function.arguments)
-          output = functions.create_lead(arguments["name"], arguments["phone"])
+          output = functions.create_lead(arguments["name"], arguments["phone"], arguments["email"])
           client.beta.threads.runs.submit_tool_outputs(thread_id=thread_id,
                                                        run_id=run_id,
                                                        tool_outputs=[{
