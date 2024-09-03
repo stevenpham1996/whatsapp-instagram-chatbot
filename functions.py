@@ -16,7 +16,7 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 
 
 # Add lead to Airtable
-def create_lead(name, phone, email):
+def create_lead(name: str, phone, email: str):
   url = "https://api.airtable.com/v0/appt5qCjVVa2CDM3t/Accelerator%20Leads"
   headers = {
       "Authorization":
